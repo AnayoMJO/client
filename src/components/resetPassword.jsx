@@ -21,7 +21,7 @@ import {
 	selectResetPasswordSuccessMessage,
 } from "../slice/auth";
 import { LoadingButton } from "@mui/lab";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MotionConfig, motion } from "framer-motion";
 
 export const ResetPassword = () => {

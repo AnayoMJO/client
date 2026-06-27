@@ -44,7 +44,7 @@ const sortOptions = [
 ];
 
 export const ProductList = () => {
-	const [filters, setFilters] = useState({});
+	const [filters] = useState({});
 	const [page, setPage] = useState(1);
 	const [sort, setSort] = useState(null);
 	const theme = useTheme();
@@ -74,10 +74,10 @@ export const ProductList = () => {
 
 	const filteredProducts = searchQuery
 		? products.filter(
-				(product) =>
-					product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-					product.description.toLowerCase().includes(searchQuery.toLowerCase())
-		  )
+			(product) =>
+				product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				product.description.toLowerCase().includes(searchQuery.toLowerCase())
+		)
 		: products;
 
 	useEffect(() => {

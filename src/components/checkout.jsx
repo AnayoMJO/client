@@ -42,7 +42,6 @@ export const Checkout = () => {
 		register,
 		handleSubmit,
 		reset,
-		formState: { errors },
 	} = useForm();
 	const dispatch = useDispatch();
 	const loggedInUser = useSelector(selectLoggedInUser);

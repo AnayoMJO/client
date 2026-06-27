@@ -26,7 +26,6 @@ export const Cart = ({ checkout }) => {
 		0
 	);
 	const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
-	const navigate = useNavigate();
 	const theme = useTheme();
 	const is900 = useMediaQuery(theme.breakpoints.down(900));
 
