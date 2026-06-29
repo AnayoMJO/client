@@ -31,6 +31,7 @@ export const Cart = ({ checkout }) => {
 
 	const cartItemRemoveStatus = useSelector(selectCartItemRemoveStatus);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		window.scrollTo({
@@ -39,11 +40,11 @@ export const Cart = ({ checkout }) => {
 		});
 	}, []);
 
-	//useEffect(() => {
-	//	if (items.length === 0) {
-	//		navigate( "/" );
-	//	}
-	//}, [items, navigate]);
+	useEffect(() => {
+		if (items.length === 0) {
+			navigate("/");
+		}
+	}, [items, navigate]);
 
 	useEffect(() => {
 		if (cartItemRemoveStatus === "fulfilled") {
