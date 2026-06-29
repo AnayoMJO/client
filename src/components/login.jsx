@@ -40,13 +40,13 @@ export const Login = () => {
 	const is900 = useMediaQuery(theme.breakpoints.down(900));
 	const is480 = useMediaQuery(theme.breakpoints.down(480));
 
-	useEffect(() => {
-		if (loggedInUser && loggedInUser?.isVerified) {
-			navigate("/");
-		} else if (loggedInUser && !loggedInUser?.isVerified) {
-			navigate("/verify-otp");
-		}
-	}, [loggedInUser, navigate]);
+	// useEffect(() => {
+	// 	if (loggedInUser && loggedInUser?.isVerified) {
+	// 		navigate("/");
+	// 	} else if (loggedInUser && !loggedInUser?.isVerified) {
+	// 		navigate("/verify-otp");
+	// 	}
+	// }, [loggedInUser, navigate]);
 
 	useEffect(() => {
 		if (error) {
@@ -55,7 +55,7 @@ export const Login = () => {
 	}, [error]);
 
 	useEffect(() => {
-		if (status === "fullfilled" && loggedInUser?.isVerified === true) {
+		if (status === "fullfilled" && loggedInUser) {
 			toast.success(`Login successful`);
 			reset();
 		}
@@ -63,12 +63,13 @@ export const Login = () => {
 			dispatch(clearLoginError());
 			dispatch(resetLoginStatus());
 		};
-	}, [status, dispatch, loggedInUser?.isVerified, reset]);
+	}, [status, dispatch, loggedInUser, reset]);
 
 	const handleLogin = (data) => {
 		const cred = { ...data };
 		delete cred.confirmPassword;
 		dispatch(LoginAsync(data));
+		navigate("/");
 	};
 
 	return (

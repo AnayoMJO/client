@@ -8,13 +8,13 @@ import {
 } from "@mui/material";
 import React, { useEffect } from "react";
 import Lottie from "lottie-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ecommerceOutlookAnimation } from "../assets/index";
 import { useDispatch, useSelector } from "react-redux";
 import { LoadingButton } from "@mui/lab";
 import {
-	selectLoggedInUser,
+	//selectLoggedInUser,
 	signupAsync,
 	selectSignupStatus,
 	selectSignupError,
@@ -28,24 +28,24 @@ export const Signup = () => {
 	const dispatch = useDispatch();
 	const status = useSelector(selectSignupStatus);
 	const error = useSelector(selectSignupError);
-	const loggedInUser = useSelector(selectLoggedInUser);
+	//const loggedInUser = useSelector(selectLoggedInUser);
 	const {
 		register,
 		reset,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const navigate = useNavigate();
+	//const navigate = useNavigate();
 	const theme = useTheme();
 	const is900 = useMediaQuery(theme.breakpoints.down(900));
 	const is480 = useMediaQuery(theme.breakpoints.down(480));
-	useEffect(() => {
-		if (loggedInUser && !loggedInUser?.isVerified) {
-			navigate("/verify-otp");
-		} else if (loggedInUser) {
-			navigate("/");
-		}
-	}, [loggedInUser, navigate]);
+	// useEffect(() => {
+	// 	if (loggedInUser && !loggedInUser?.isVerified) {
+	// 		navigate("/verify-otp");
+	// 	} else if (loggedInUser) {
+	// 		navigate("/");
+	// 	}
+	// }, [loggedInUser, navigate]);
 	useEffect(() => {
 		if (error) {
 			toast.error(error.message);
